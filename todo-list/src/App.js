@@ -9,7 +9,8 @@ class App extends Component {
     this.todoItem = [
       { title: 'Take coffee', isComplete: true},
       { title: 'Play badminton', isComplete: false},
-      { title: 'Read book', isComplete: true}
+      { title: 'Read book', isComplete: true},
+      { title: 'Collect music', isComplete: true}
     ]
   }
 
