@@ -6,22 +6,46 @@ import TodoItem from './components/todoitem'
 class App extends Component {
   constructor() {
     super();
-    this.todoItem = [
-      { title: 'Take coffee', isComplete: true},
-      { title: 'Play badminton', isComplete: false},
-      { title: 'Read book', isComplete: true},
-      { title: 'Collect music', isComplete: true}
-    ]
+    this.state = {
+      todoItems: [
+        { title: 'Take coffee', isComplete: true},
+        { title: 'Play badminton', isComplete: false},
+        { title: 'Read book', isComplete: true},
+        { title: 'Collect music', isComplete: true}
+      ]
+    }
+  }
+
+  onItemClicked(item) {
+    return (event) => {
+      const isComplete = item.isComplete;
+      const { todoItems } = this.state;
+      const index = todoItems.indexOf(item);
+      this.setState({
+        todoItems: [
+          ...todoItems.slice(0,index),
+          {
+            ...item,
+            isComplete: !isComplete
+          },
+          ...todoItems.slice(index + 1)
+        ]
+      });
+    }
   }
 
   render() {
+    const { todoItems } = this.state;
     return (
       <div className="App">
-        {this.todoItem.length > 0 &&
-          this.todoItem.map((item,index) => 
-            <TodoItem key={index} item={item}/> )
-        }
-        {this.todoItem.length === 0 && 'Nothing here'}
+        {todoItems.length > 0 &&
+          todoItems.map((item,index) => 
+            <TodoItem 
+            key={index} 
+            item={item} 
+            onClick={this.onItemClicked(item)} />)
+        } 
+        {todoItems.length === 0 && 'Nothing here'}
       </div>
     );
   }
