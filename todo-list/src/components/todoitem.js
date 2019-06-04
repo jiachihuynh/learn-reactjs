@@ -3,6 +3,7 @@ import './todoitem.css';
 import classNames from 'classnames';
 import checkImg from '../img/check.svg';
 import checkCompleteImg from '../img/check-complete.svg';
+import tick from '../img/tick.svg';
 
 class TodoItem extends Component { 
     render() {

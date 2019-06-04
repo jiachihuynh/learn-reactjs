@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TodoItem from './components/todoitem'
+import tick from './img/tick.svg';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      newItem: '',
       todoItems: [
         { title: 'Take coffee', isComplete: true},
         { title: 'Play badminton', isComplete: false},
@@ -14,6 +15,9 @@ class App extends Component {
         { title: 'Collect music', isComplete: true}
       ]
     }
+
+    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   onItemClicked(item) {
@@ -33,11 +37,42 @@ class App extends Component {
       });
     }
   }
+  
+  onChange(event) {
+    this.setState({
+      newItem: event.target.value
+    })
+  }
+
+  onKeyUp(event) {
+    if(event.keyCode === 13){
+      let text = event.target.value;
+      if(!text){ return; }
+      text = text.trim();
+      if(!text){ return; }
+      
+      this.setState({
+        newItem: '',
+        todoItems: [
+          { title: text, isComplete: false},
+          ...this.state.todoItems
+      ]
+     })
+    } 
+  }
 
   render() {
-    const { todoItems } = this.state;
+    const { todoItems, newItem } = this.state;
     return (
       <div className="App">
+        <div className="Header">
+          <img src={tick} width={32} height={32} />
+          <input type="text" placeholder="Add a new item"
+          value={newItem} 
+          onChange={this.onChange} 
+          onKeyUp={this.onKeyUp}
+          />
+        </div>
         {todoItems.length > 0 &&
           todoItems.map((item,index) => 
             <TodoItem 
