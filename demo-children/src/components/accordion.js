@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Accordion extends Components {
+class Accordion extends Component {
     constructor(props){
         super(props);
         this.state = {
