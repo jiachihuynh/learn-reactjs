@@ -12,7 +12,7 @@ class App extends Component {
         { title: 'Take coffee', isComplete: true},
         { title: 'Play badminton', isComplete: false},
         { title: 'Read book', isComplete: true},
-        { title: 'Collect music', isComplete: true}
+        { title: 'Collect music', isComplete: false}
       ]
     }
 
