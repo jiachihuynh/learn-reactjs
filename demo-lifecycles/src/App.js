@@ -15,7 +15,7 @@ class App extends Component {
   }
   
   removeCounter(){
-    this.setState = ({
+    this.setState({
       showCounter: false
     });
   }
