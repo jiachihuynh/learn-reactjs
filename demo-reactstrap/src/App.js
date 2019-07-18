@@ -25,7 +25,7 @@ const list = [
   }
 ];
 
-class App extends Component {
+class App extends Component { 
   constructor(props){
     super(props);
     
@@ -38,6 +38,7 @@ class App extends Component {
 
   onDismiss(id){
     const updatedList = this.state.list.filter(item => item.objId !== id);
+    this.setState({ list: updatedList});
   }
 
   render(){
