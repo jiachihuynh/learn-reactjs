@@ -3,17 +3,61 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'reactstrap';
 
+
+const list = [
+  {
+    title: 'Google',
+    url: 'https://google.com',
+    author: 'Jiachi',
+    objId: 0
+  },
+  {
+    title: 'Facebook',
+    url: 'https://facebook.com',
+    author: 'Liar',
+    objId: 1
+  },
+  {
+    title: 'Applee',
+    url: 'https://apple.com',
+    author: 'Kyfe',
+    objId: 2
+  }
+];
+
 class App extends Component {
+  constructor(props){
+    super(props);
+    
+    this.state = {
+      list,
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onDismiss(id){
+    const updatedList = this.state.list.filter(item => item.objId !== id);
+  }
+
   render(){
     return (
       <div className="App">
-        <Button color="primary">primary</Button>{' '}
-        <Button color="secondary">secondary</Button>{' '}
-        <Button color="success">success</Button>{' '}
-        <Button color="info">info</Button>{' '}
-        <Button color="warning">warning</Button>{' '}
-        <Button color="danger">danger</Button>{' '}
-        <Button color="link">link</Button>
+        {this.state.list.map(item =>
+          <div key={item.objId}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>
+              <button onClick={() => this.onDismiss(item.objId)}
+                type="button"
+              >
+                Dismiss
+              </button>  
+            </span>
+          </div>  
+        )}
       </div>
     );
   }
