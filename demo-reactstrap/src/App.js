@@ -17,7 +17,7 @@ const list = [
   {
     title: 'Apple',
     url: 'https://apple.com',
-    author: 'Huynh Gia Ky',
+    author: 'Ky Huynh',
     objId: 2
   }
 ];
