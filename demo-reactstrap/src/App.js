@@ -39,16 +39,17 @@ class App extends Component {
   }
 
   render(){
+    const { list } = this.state;
     return (
       <div className="App">
-        {this.state.list.map(item =>
-          <div key={item.objId}>
+        {list.map((item,index) =>
+          <div key={index}>
             <span>
               <a href={item.url}>{item.title}</a>
             </span>
             <span>{item.author}</span>
             <span>
-              <button onClick={() => this.onDismiss(item.objId)}
+              <button onClick={ () => this.onDismiss(item.objId)}
                 type="button"
               >
                 Dismiss
