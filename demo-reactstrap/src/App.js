@@ -22,7 +22,7 @@ const list = [
   }
 ];
 
-class App extends Component { 
+export default class App extends Component { 
   constructor(props){
     super(props);
     
@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   onDismiss(id){
-    return (event) => {
+    return(event) => {
       const updatedList = this.state.list.filter(item => item.objId !== id);
       this.setState({ list: updatedList});
     }
@@ -51,7 +51,7 @@ class App extends Component {
             </span>
             <span>{item.author}</span>
             <span>
-              <button onClick={this.onDismisss(item.objId)}
+              <button onClick={this.onDismisss}
                 type="button"
               >
                 Dismiss
@@ -63,5 +63,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
