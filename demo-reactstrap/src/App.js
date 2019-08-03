@@ -51,7 +51,7 @@ export default class App extends Component {
             </span>
             <span>{item.author}</span>
             <span>
-              <button onClick={this.onDismisss}
+              <button onClick={this.onDismiss(item.objId)}
                 type="button"
               >
                 Dismiss
@@ -63,3 +63,4 @@ export default class App extends Component {
     );
   }
 }
+
