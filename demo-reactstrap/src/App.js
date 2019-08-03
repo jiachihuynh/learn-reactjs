@@ -30,12 +30,14 @@ class App extends Component {
       list,
     };
 
-    this.onDismiss = this.onDismiss.bind(this);
+    //this.onDismiss = this.onDismiss.bind(this);
   }
 
   onDismiss(id){
-    const updatedList = this.state.list.filter(item => item.objId !== id);
-    this.setState({ list: updatedList});
+    return (event) => {
+      const updatedList = this.state.list.filter(item => item.objId !== id);
+      this.setState({ list: updatedList});
+    }
   }
 
   render(){
@@ -49,7 +51,7 @@ class App extends Component {
             </span>
             <span>{item.author}</span>
             <span>
-              <button onClick={ () => this.onDismiss(item.objId)}
+              <button onClick={this.onDismisss(item.objId)}
                 type="button"
               >
                 Dismiss
